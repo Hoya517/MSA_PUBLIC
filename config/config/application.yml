@@ -1,0 +1,39 @@
+# 2시간(7,200,000), 1일(86,400,000) jwt token
+token:
+  expiration_time: 7200000
+  refresh_time: 86400000
+  secret: 'token_secret'
+  public: MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA98960Kfh9QjHTU5Ig6m+iiBjQCXkkX2uMQqjam0JVdk+4MwRMZdTG4Tey2GhL0ja841KBDmYT7Bsxb80KmQ2GpzZfuFnqZc/fqF58SI8XRcIe8NxK1/IOrJX9A3TEZknHLzjnvyhctyFsIiGO+tGRtHIJR/7kUE0zMD5c+UR/VBXzbL5QNcTcK+PikLvLwz6PC0AZWtRJJ31Rca1w4qz4SzYXF0fQFGGPIF/Z4Jt4TcbfsrZLj+DjasbR309oWZj81FwBgw77ULU/Lt+QPG9A4eVJGKNhmCbyarwUbNsMAwjCjuJYVQY3K/ZBZ/1HU3CF2YAVC7RWuIB2DuMxirpZEwAy0FfwVbOpc7P4JMVz35aVL2zHA/+nxyZNSY9fzPQxXkoKN5C6i0ldExoqksH2zaqMqWNCnQO+hATv0rQN5j30rbYLThHysPlJGVPJ0f7/CClXLlCTKc209XY5e2eQfyCrRquTMpjzvhx9gAgVADFoIJQHca5xvtLT1//86tRAgMBAAE=
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} # random port 사용시 eureka server에 인스턴스가 각각 표시되지 않는다
+    preferIpAddress: true # 서비스간 통신 시 hostname 보다 ip 를 우선
+  client:
+    register-with-eureka: true # eureka 서버에 등록
+    fetch-registry: true # 외부 검색 가능
+    service-url:
+      defaultZone: http://admin:admin@${eureka.instance.hostname:localhost}:8761/eureka
+
+# file attach location - messages{lang}.properties 도 이 경로에 위치한다.
+file:
+  directory: ${app.home:${user.home}}/msa-attach-volume # url 사용시에는 사용되지 않는다
+  url: http://${file.hostname:localhost}:8080 # nginx 로 파일 다운로드 처리
+messages:
+  directory: ${file.directory}/messages
+
+apigateway:
+  host: http://localhost:8000
+
+# rabbitmq server
+#spring:
+#  rabbitmq:
+#    host: ${rabbitmq.hostname:localhost}
+#    port: 5672
+#    username: guest
+#    password: guest
+#  zipkin:
+#    base-url: http://${zipkin.hostname:localhost}:${zipkin.port:9411}
+
+egov:
+  message: hello
