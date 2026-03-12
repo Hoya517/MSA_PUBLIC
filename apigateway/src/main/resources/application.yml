@@ -1,6 +1,12 @@
 server:
   port: 8000
 
+token:
+  expiration_time: 7200000
+  refresh_time: 86400000
+  secret: 'token_secret'
+  public: MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA98960Kfh9QjHTU5Ig6m+iiBjQCXkkX2uMQqjam0JVdk+4MwRMZdTG4Tey2GhL0ja841KBDmYT7Bsxb80KmQ2GpzZfuFnqZc/fqF58SI8XRcIe8NxK1/IOrJX9A3TEZknHLzjnvyhctyFsIiGO+tGRtHIJR/7kUE0zMD5c+UR/VBXzbL5QNcTcK+PikLvLwz6PC0AZWtRJJ31Rca1w4qz4SzYXF0fQFGGPIF/Z4Jt4TcbfsrZLj+DjasbR309oWZj81FwBgw77ULU/Lt+QPG9A4eVJGKNhmCbyarwUbNsMAwjCjuJYVQY3K/ZBZ/1HU3CF2YAVC7RWuIB2DuMxirpZEwAy0FfwVbOpc7P4JMVz35aVL2zHA/+nxyZNSY9fzPQxXkoKN5C6i0ldExoqksH2zaqMqWNCnQO+hATv0rQN5j30rbYLThHysPlJGVPJ0f7/CClXLlCTKc209XY5e2eQfyCrRquTMpjzvhx9gAgVADFoIJQHca5xvtLT1//86tRAgMBAAE=
+
 spring:
   application:
     name: apigateway
